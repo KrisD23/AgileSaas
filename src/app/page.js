@@ -1,7 +1,16 @@
-import React from "react";
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import { connectToDb } from "../../lib/utils";
 
-function HomePage() {
-  return <div className="btn">Hello Universe!</div>;
+async function HomePage() {
+  return (
+    <div className="btn">
+      <RegisterLink>Maa chuda</RegisterLink>
+      Hello Universe!
+    </div>
+  );
 }
 
 export default HomePage;
