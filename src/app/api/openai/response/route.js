@@ -1,9 +1,10 @@
-import { db } from "@/db";
+// import { db } from "@/db";
 import { openai } from "@/lib/openai";
 import { SendMessageValidator } from "@/lib/validators/SendMessageValidator";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-import { OpenAIStream, StreamingTextResponse } from "ai";
+// import { OpenAIStream, StreamingTextResponse } from "ai";
+import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   //takes query and returns a response
@@ -13,21 +14,11 @@ export const POST = async (req) => {
   const { getUser } = getKindeServerSession();
   const user = getUser();
 
-  const { id: userId } = user;
+  // const { id: userId } = user;
 
-  if (!userId) return new Response("Unauthorized", { status: 401 });
+  // if (!userId) return new Response("OPENAI_API_Unauthorized", { status: 401 });
 
   const { message } = SendMessageValidator.parse(body);
-
-  //   const file = await db.file.findFirst({
-  //     where: {
-  //       id: fileId,
-  //       userId,
-  //     },
-  //   })
-
-  //   if (!file)
-  //     return new Response('Not found', { status: 404 })
 
   //   await db.message.create({
   //     data: {
@@ -40,53 +31,26 @@ export const POST = async (req) => {
 
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    temperature: 0,
-    stream: true,
+    temperature: 0.7, // Adjust temperature for creativity
     messages: [
       {
         role: "system",
         content:
-          "Use the following prompt to generate a response from the OpenAI API:",
+          "Provide your SaaS idea and any additional details you have in mind:",
       },
       {
         role: "user",
-        content: `
-          Use the following prompt to generate a response from the OpenAI API:
-  
-          ----------------
-  
-          *Prompt:*
-  
-          Imagine a future where humans have colonized Mars. Write a news article describing a recent discovery made by a team of Martian scientists. The discovery should be significant and have implications for the future of Martian exploration and colonization.
-  
-          ----------------
-  
-          *Context:*
-  
-          Provide any additional context or details relevant to the prompt that you'd like the AI to consider when generating the response.
-  
-          ----------------
-  
-          *User Input:*
-  
-          Enter any specific questions or prompts for the AI here.
-        `,
+        content: message,
+      },
+      {
+        role: "system",
+        content:
+          "Generate a detailed response including roadmap, implementation, and tech stack suggestions for the provided SaaS idea:",
       },
     ],
   });
 
-  //   const stream = OpenAIStream(response, {
-  //     async onCompletion(completion) {
-  //       await db.message.create({
-  //         data: {
-  //           text: completion,
-  //           isUserMessage: false,
-  //           fileId,
-  //           userId,
-  //         },
-  //       })
-  //     },
-  //   })
+  console.log(response.choices[0].message);
 
-  return new StreamingTextResponse(stream);
+  return new NextResponse(response.choices[0].message);
 };
