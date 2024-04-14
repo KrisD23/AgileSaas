@@ -49,3 +49,23 @@ export const addAnswer = async ({ promptInput, userId, content }) => {
     throw new Error("Something went wrong when creating answer");
   }
 };
+
+export const submitQuery = async ({ message, userId }) => {
+  try {
+    const response = await fetch("http://localhost:3000/api/openai/response/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    const data = await response.json();
+
+    await addAnswer({
+      promptInput: message,
+      content: JSON.stringify(data),
+      userId,
+    });
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};

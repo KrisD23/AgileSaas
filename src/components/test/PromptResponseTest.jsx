@@ -1,36 +1,18 @@
 "use client";
 
-import { addAnswer } from "@/lib/action";
+import { addAnswer, submitQuery } from "@/lib/action";
 
 import React, { useState } from "react";
 
 const PromptResponseTest = ({ userId }) => {
-  console.log("userId:", userId);
   const [message, setMessage] = useState("");
+  const [data, setData] = useState(null);
 
   const submitFunction = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/openai/response/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message }),
-        }
-      );
-      const data = await response.json();
-
-      // console.log(JSON.stringify(data));
-
-      await addAnswer({
-        promptInput: message,
-        content: JSON.stringify(data),
-        userId,
-      });
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    ("use server");
+    const res = await submitQuery({ message, userId });
+    setData(res);
   };
 
   return (
@@ -46,7 +28,7 @@ const PromptResponseTest = ({ userId }) => {
 
         <button type="submit" className="btn btn-primary mt-4">
           Submit
-          <div></div>
+          <div>{data && console.log(data)}</div>
         </button>
       </form>
     </div>
