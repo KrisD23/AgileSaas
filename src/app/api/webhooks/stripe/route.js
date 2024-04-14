@@ -1,8 +1,8 @@
 import { headers } from "next/headers";
 
 import { stripe } from "@/lib/stripe";
-// import { connectToDb } from "@/lib/utils";
-// import { User } from "@/lib/models";
+import { connectToDb } from "@/lib/utils";
+import { User } from "@/lib/models";
 
 export async function POST(req) {
   const body = await req.text();
@@ -27,19 +27,19 @@ export async function POST(req) {
     const userId = session.metadata.userId;
     try {
       console.log("userId:", userId);
-      //   await connectToDb();
-      //   const foundUser = await User.findOne({ username: userId });
-      //   if (!foundUser) {
-      //     throw new Error("User not found");
-      //   }
-      //   console.log("isPremiumUser:", foundUser.isPremiumUser);
-      //   if (!foundUser.isPremiumUser) {
-      //     foundUser.isPremiumUser = true;
-      //     await foundUser.save();
-      //     console.log("User upgraded to premium.");
-      //   } else {
-      //     console.log("User is already a premium user.");
-      //   }
+      await connectToDb();
+      const foundUser = await User.findOne({ username: userId });
+      if (!foundUser) {
+        throw new Error("User not found");
+      }
+      console.log("isPremiumUser:", foundUser.isPremiumUser);
+      if (!foundUser.isPremiumUser) {
+        foundUser.isPremiumUser = true;
+        await foundUser.save();
+        console.log("User upgraded to premium.");
+      } else {
+        console.log("User is already a premium user.");
+      }
     } catch (error) {
       console.error("Error getting payment status:", error);
     }
