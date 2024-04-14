@@ -26,7 +26,7 @@ const PromptResponseTest = ({ userId }) => {
       await addAnswer({
         promptInput: message,
         content: data,
-        userId: mongoose.Types.ObjectId(userId),
+        userId,
       });
       // console.log(addAnswer);
       console.log("data:", data);

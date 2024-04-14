@@ -34,14 +34,6 @@ export const addUser = async ({ user }) => {
 };
 
 export const addAnswer = async ({ promptInput, userId, content }) => {
-  console.log(
-    "userId:",
-    userId,
-    "promptInput:",
-    promptInput,
-    "content:",
-    content
-  );
   try {
     await connectToDb();
     const newAnswer = new Answer({
