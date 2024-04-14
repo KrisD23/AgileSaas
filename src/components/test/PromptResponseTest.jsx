@@ -28,9 +28,16 @@ const PromptResponseTest = ({ userId }) => {
 
         <button type="submit" className="btn btn-primary mt-4">
           Submit
-          <div>{data && console.log(data)}</div>
         </button>
       </form>
+      <div className="text-center">
+        <p>{data && console.log(data["Overview"])}</p>
+        <p>Overview : {data && data["Overview"]}</p>
+        <br />
+        <p>Monetization Strategy : {data && data["Monetization Strategy"]}</p>
+        <br />
+        <p> Marketing Strategy : {data && data["Marketing Strategy"]}</p>
+      </div>
     </div>
   );
 };

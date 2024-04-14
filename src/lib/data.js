@@ -8,7 +8,7 @@ export const getQueries = async () => {
   try {
     await connectToDb();
     const user = await User.findOne({ username: userId });
-    console.log("user:", user);
+    // console.log("user:", user);
     const queries = await Answer.find({ user: user._id });
     console.log("queries:", queries);
     // const queries = await Answer.find(username);
