@@ -87,6 +87,7 @@ export const POST = async (req) => {
   });
 
   const res = response.choices[0].message.content;
+  console.log(res);
 
   return new NextResponse(res);
 };

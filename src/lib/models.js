@@ -90,7 +90,7 @@ const answerSchema = new mongoose.Schema({
       min: 10, // Change this
     },
     responseMessage: {
-      type: String,
+      type: Object,
       // type: responseDataSchema, // Embed responseDataSchema into responseMessage
       required: true,
     },

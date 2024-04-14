@@ -1,13 +1,12 @@
 "use client";
 
 import { addAnswer } from "@/lib/action";
-import mongoose from "mongoose";
+
 import React, { useState } from "react";
 
 const PromptResponseTest = ({ userId }) => {
   console.log("userId:", userId);
   const [message, setMessage] = useState("");
-  const [response, setResponse] = useState(null);
 
   const submitFunction = async (e) => {
     e.preventDefault();
@@ -20,23 +19,15 @@ const PromptResponseTest = ({ userId }) => {
           body: JSON.stringify({ message }),
         }
       );
-      // console.log("response:", response);
-      // const newData = await response.text();
-      // console.log("newData:", newData);
+      const data = await response.json();
 
-      const data = response.json();
+      // console.log(JSON.stringify(data));
 
-      console.log(data);
-
-      // console.log(JSON.stringify(jsonData, null, 2));
-      setResponse(data);
-      // await addAnswer({
-      //   promptInput: message,
-      //   content: data,
-      //   userId,
-      // });
-
-      // console.log("data:", data);
+      await addAnswer({
+        promptInput: message,
+        content: JSON.stringify(data),
+        userId,
+      });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
