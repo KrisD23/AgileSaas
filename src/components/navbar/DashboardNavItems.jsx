@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   {
-    name: "inbox",
-    href: "/dashboard/inbox",
+    name: "Roadmap",
+    href: "/dashboard/roadmap",
   },
 
   {
