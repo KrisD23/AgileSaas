@@ -36,6 +36,47 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.models?.User || mongoose.model("User", userSchema);
 
+// const responseDataSchema = new mongoose.Schema({
+//   overview: {
+//     type: String,
+//     required: true,
+//   },
+//   keyFeatures: {
+//     type: [String],
+//     required: true,
+//   },
+//   roadmap: {
+//     type: [String],
+//     required: true,
+//   },
+//   techStackSuggestions: {
+//     frontend: {
+//       type: String,
+//       required: true,
+//     },
+//     backend: {
+//       type: String,
+//       required: true,
+//     },
+//     database: {
+//       type: String,
+//       required: true,
+//     },
+//     cloudStorage: {
+//       type: String,
+//       required: true,
+//     },
+//   },
+//   monetizationStrategy: {
+//     type: String,
+//     required: true,
+//   },
+//   marketingStrategy: {
+//     type: String,
+//     required: true,
+//   },
+// });
+
 // Answer model
 const answerSchema = new mongoose.Schema({
   user: {
@@ -50,6 +91,8 @@ const answerSchema = new mongoose.Schema({
     },
     responseMessage: {
       type: String,
+      // type: responseDataSchema, // Embed responseDataSchema into responseMessage
+      required: true,
     },
     createdAt: {
       type: Date,

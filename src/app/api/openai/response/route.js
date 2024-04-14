@@ -32,6 +32,7 @@ export const POST = async (req) => {
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     temperature: 0.7, // Adjust temperature for creativity
+    response_format: { type: "json_object" },
     messages: [
       {
         role: "system",
@@ -47,11 +48,45 @@ export const POST = async (req) => {
         content:
           "Generate a detailed response including roadmap, implementation, and tech stack suggestions for the provided SaaS idea:",
       },
+      {
+        role: "user",
+        content:
+          "Overview: \n\n" +
+          "Key Features: \n\n" +
+          "Roadmap: \n\n" +
+          "Tech Stack Suggestions: \n\n" +
+          "Monetization Strategy: \n\n" +
+          "Marketing Strategy: ",
+      },
+      {
+        role: "system",
+        content: "Please provide an overview of your SaaS idea:",
+      },
+      {
+        role: "system",
+        content: "What are the key features of your SaaS idea?",
+      },
+      {
+        role: "system",
+        content: "What is your roadmap for implementing this idea?",
+      },
+      {
+        role: "system",
+        content: "What technologies do you suggest using for implementation?",
+      },
+      {
+        role: "system",
+        content: "How do you plan to monetize your SaaS product?",
+      },
+      {
+        role: "system",
+        content:
+          "What is your marketing strategy for promoting your SaaS product? JSON",
+      },
     ],
   });
 
-  // console.log(response.choices[0].message);
-  const res = JSON.stringify(response.choices[0].message.content);
+  const res = response.choices[0].message.content;
 
   return new NextResponse(res);
 };

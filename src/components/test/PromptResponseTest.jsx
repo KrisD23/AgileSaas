@@ -21,15 +21,22 @@ const PromptResponseTest = ({ userId }) => {
         }
       );
       // console.log("response:", response);
-      const data = await response.text();
+      // const newData = await response.text();
+      // console.log("newData:", newData);
+
+      const data = response.json();
+
+      console.log(data);
+
+      // console.log(JSON.stringify(jsonData, null, 2));
       setResponse(data);
-      await addAnswer({
-        promptInput: message,
-        content: data,
-        userId,
-      });
-      // console.log(addAnswer);
-      console.log("data:", data);
+      // await addAnswer({
+      //   promptInput: message,
+      //   content: data,
+      //   userId,
+      // });
+
+      // console.log("data:", data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -45,8 +52,10 @@ const PromptResponseTest = ({ userId }) => {
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         />
+
         <button type="submit" className="btn btn-primary mt-4">
           Submit
+          <div></div>
         </button>
       </form>
     </div>
