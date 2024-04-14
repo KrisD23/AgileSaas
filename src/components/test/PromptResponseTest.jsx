@@ -1,8 +1,11 @@
 "use client";
 
+import { addAnswer } from "@/lib/action";
+import mongoose from "mongoose";
 import React, { useState } from "react";
 
-const PromptResponseTest = () => {
+const PromptResponseTest = ({ userId }) => {
+  console.log("userId:", userId);
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState(null);
 
@@ -17,9 +20,16 @@ const PromptResponseTest = () => {
           body: JSON.stringify({ message }),
         }
       );
-      const data = await response.json();
+      // console.log("response:", response);
+      const data = await response.text();
       setResponse(data);
-      console.log(data);
+      await addAnswer({
+        promptInput: message,
+        content: data,
+        userId: mongoose.Types.ObjectId(userId),
+      });
+      // console.log(addAnswer);
+      console.log("data:", data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

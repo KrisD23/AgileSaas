@@ -50,7 +50,8 @@ export const POST = async (req) => {
     ],
   });
 
-  console.log(response.choices[0].message);
+  // console.log(response.choices[0].message);
+  const res = JSON.stringify(response.choices[0].message.content);
 
-  return new NextResponse(response.choices[0].message);
+  return new NextResponse(res);
 };

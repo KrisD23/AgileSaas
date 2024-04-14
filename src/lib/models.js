@@ -36,4 +36,30 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.models?.User || mongoose.model("User", userSchema);
 
-export { User };
+// Answer model
+const answerSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  message: {
+    inputMessage: {
+      type: String,
+      required: true,
+      min: 10, // Change this
+    },
+    responseMessage: {
+      type: String,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+});
+
+// Define Messages model based on the schema
+const Answer =
+  mongoose.models?.Answer || mongoose.model("Answer", answerSchema);
+
+export { User, Answer };

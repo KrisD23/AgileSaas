@@ -3,7 +3,8 @@
 import { revalidatePath } from "next/cache"; // Next.js cache module
 import { connectToDb } from "@/lib/utils"; // Database connection module
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"; // Auth module
-import { User } from "./models"; // Database models
+import { Answer, User } from "./models"; // Database models
+import mongoose from "mongoose";
 
 export const addUser = async ({ user }) => {
   /* 
@@ -29,5 +30,30 @@ export const addUser = async ({ user }) => {
   } catch (error) {
     console.log(error); // Log error
     return { error: "something went wrong when creating user" }; // Return error message
+  }
+};
+
+export const addAnswer = async ({ promptInput, userId, content }) => {
+  console.log(
+    "userId:",
+    userId,
+    "promptInput:",
+    promptInput,
+    "content:",
+    content
+  );
+  try {
+    await connectToDb();
+    const newAnswer = new Answer({
+      user: userId,
+      message: { inputMessage: promptInput, responseMessage: content },
+    });
+    console.log("newAnswer:", newAnswer);
+    await newAnswer.save();
+    revalidatePath("/dashboard/queries");
+    console.log("saved to db");
+  } catch (error) {
+    console.log(error);
+    throw new Error("Something went wrong when creating answer");
   }
 };

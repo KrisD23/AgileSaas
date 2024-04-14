@@ -8,6 +8,10 @@ const navItems = [
     name: "Roadmap",
     href: "/dashboard/roadmap",
   },
+  {
+    name: "Queries",
+    href: "/dashboard/queries",
+  },
 
   {
     name: "Subscription",
