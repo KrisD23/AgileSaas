@@ -1,7 +1,7 @@
 import React from "react";
 
 const page = () => {
-  return <div>All the query</div>;
+  return <div>Querries page</div>;
 };
 
 export default page;

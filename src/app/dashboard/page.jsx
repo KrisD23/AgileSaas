@@ -2,6 +2,7 @@ import { User } from "@/lib/models";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import mongoose from "mongoose";
 import { redirect } from "next/navigation";
+import DashboardComponent from "./DashboardComponent";
 
 const page = async () => {
   const { getUser } = getKindeServerSession();
@@ -35,7 +36,11 @@ const page = async () => {
   } catch (error) {
     console.log(error);
   }
-  return <div>DashboardPage</div>;
+  return (
+    <div>
+      <DashboardComponent />
+    </div>
+  );
 };
 
 export default page;
