@@ -2,9 +2,8 @@
 
 import { revalidatePath } from "next/cache"; // Next.js cache module
 import { connectToDb } from "@/lib/utils"; // Database connection module
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"; // Auth module
+
 import { Answer, User } from "./models"; // Database models
-import mongoose from "mongoose";
 
 export const addUser = async ({ user }) => {
   /* 

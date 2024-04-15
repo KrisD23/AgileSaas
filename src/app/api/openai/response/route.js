@@ -31,58 +31,21 @@ export const POST = async (req) => {
 
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    temperature: 0.7, // Adjust temperature for creativity
+    temperature: 0.1,
     response_format: { type: "json_object" },
     messages: [
+      { role: "system", content: "Share your SaaS idea and details." },
       {
         role: "system",
         content:
-          "Provide your SaaS idea and any additional details you have in mind:",
-      },
-      {
-        role: "user",
-        content: message,
+          "Generate roadmap, tech stack, monetization, market, competitors, and marketing.",
       },
       {
         role: "system",
         content:
-          "Generate a detailed response including roadmap, implementation, and tech stack suggestions for the provided SaaS idea:",
+          "Overview:\n\nKey Features:\n\nRoadmap:\n\nTech Stack Suggestions:\n\nMonetization:\n\nMarketing:\n\nJSON",
       },
-      {
-        role: "user",
-        content:
-          "Overview: \n\n" +
-          "Key Features: \n\n" +
-          "Roadmap: \n\n" +
-          "Tech Stack Suggestions: \n\n" +
-          "Monetization Strategy: \n\n" +
-          "Marketing Strategy: ",
-      },
-      {
-        role: "system",
-        content: "Please provide an overview of your SaaS idea:",
-      },
-      {
-        role: "system",
-        content: "What are the key features of your SaaS idea?",
-      },
-      {
-        role: "system",
-        content: "What is your roadmap for implementing this idea?",
-      },
-      {
-        role: "system",
-        content: "What technologies do you suggest using for implementation?",
-      },
-      {
-        role: "system",
-        content: "How do you plan to monetize your SaaS product?",
-      },
-      {
-        role: "system",
-        content:
-          "What is your marketing strategy for promoting your SaaS product? JSON",
-      },
+      { role: "user", content: message },
     ],
   });
 

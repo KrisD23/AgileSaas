@@ -1,3 +1,5 @@
+"use server";
+
 import { Answer, User } from "./models";
 import { connectToDb } from "./utils";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
