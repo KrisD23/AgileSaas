@@ -1,13 +1,12 @@
 import PromptResponseTest from "@/components/test/PromptResponseTest";
 import { User } from "@/lib/models";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import React from "react";
 
 const page = async () => {
   try {
     const { getUser } = getKindeServerSession();
     const username = await getUser();
-    console.log("username:", username?.id);
+    // console.log("username:", username?.id);
 
     if (!username) {
       // Handle case where user is not logged in
@@ -25,7 +24,8 @@ const page = async () => {
 
     return (
       <div>
-        <PromptResponseTest userId={userId} />
+        Roadmap
+        {/* <PromptResponseTest userId={userId} /> */}
       </div>
     );
   } catch (error) {
