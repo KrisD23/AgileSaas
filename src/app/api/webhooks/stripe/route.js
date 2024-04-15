@@ -1,8 +1,9 @@
 import { headers } from "next/headers";
 
 import { stripe } from "@/lib/stripe";
-import { connectToDb } from "@/lib/utils";
+
 import { User } from "@/lib/models";
+import mongoose from "mongoose";
 
 export async function POST(req) {
   const body = await req.text();
@@ -27,7 +28,8 @@ export async function POST(req) {
     const userId = session.metadata.userId;
     try {
       console.log("userId:", userId);
-      await connectToDb();
+      await mongoose.connect(process.env.MONGO);
+
       const foundUser = await User.findOne({ username: userId });
       if (!foundUser) {
         throw new Error("User not found");
@@ -40,6 +42,7 @@ export async function POST(req) {
       } else {
         console.log("User is already a premium user.");
       }
+      mongoose.disconnect();
     } catch (error) {
       console.error("Error getting payment status:", error);
     }
