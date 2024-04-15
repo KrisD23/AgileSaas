@@ -51,11 +51,14 @@ export const addAnswer = async ({ promptInput, userId, content }) => {
 
 export const submitQuery = async ({ message, userId }) => {
   try {
-    const response = await fetch("http://localhost:3000/api/openai/response/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/openai/response/`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message }),
+      }
+    );
     const data = await response.json();
 
     await addAnswer({
