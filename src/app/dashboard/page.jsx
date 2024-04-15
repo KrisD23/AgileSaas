@@ -1,5 +1,3 @@
-"use client";
-
 import { checkAndCreateUser } from "./test";
 
 const page = async () => {
