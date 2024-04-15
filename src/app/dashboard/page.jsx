@@ -1,4 +1,9 @@
-const page = () => {
+"use client";
+
+import { checkAndCreateUser } from "./test";
+
+const page = async () => {
+  await checkAndCreateUser();
   return <div>DashboardPage</div>;
 };
 
