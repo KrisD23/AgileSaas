@@ -2,15 +2,20 @@ import { addUser } from "@/lib/action";
 import { User } from "@/lib/models";
 import { connectToDb } from "@/lib/utils";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
-const DashboardPage = async () => {
+const DashboardPage = () => {
   const { getUser } = getKindeServerSession();
-  const user = await getUser();
 
   const newUser = async () => {
     try {
       connectToDb();
+      const user = await getUser();
+
+      if (!user) {
+        redirect("/");
+      }
+
       const existingUser = await User.findOne({ username: user.id });
 
       if (!existingUser) {
@@ -27,7 +32,7 @@ const DashboardPage = async () => {
     }
   };
 
-  await newUser();
+  newUser();
 
   // if (!user) {
   //   redirect("/");
