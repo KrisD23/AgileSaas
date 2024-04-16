@@ -1,16 +1,20 @@
 "use server";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 import { revalidatePath } from "next/cache"; // Next.js cache module
 
-import { Answer } from "./models"; // Database models
+import { Answer, User } from "./models"; // Database models
 import mongoose from "mongoose";
 
-export const addAnswer = async ({ promptInput, userId, content }) => {
+export const addAnswer = async ({ promptInput, content }) => {
   try {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
     await mongoose.connect(process.env.MONGO);
+    const { _id } = await User.findOne({ username: user.id });
 
     const newAnswer = new Answer({
-      user: userId,
+      user: _id,
       message: { inputMessage: promptInput, responseMessage: content },
     });
     console.log("newAnswer:", newAnswer);

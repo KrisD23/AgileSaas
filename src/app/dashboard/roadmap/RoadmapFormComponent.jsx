@@ -3,19 +3,32 @@
 import { useState } from "react";
 import ModalComponent from "./modalComponent";
 
+import { addAnswer } from "@/lib/action";
+
 function RoadmapFormComponent() {
   const [result, setResult] = useState("");
+
   async function submitAnswer(e) {
     e.preventDefault();
     const message = e.target.getInput.value;
-    const response = await fetch(`http://localhost:3000/api/openai/response`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(message),
-    });
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/openai/response`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(message),
+        }
+      );
 
-    const responseData = await response.json();
-    setResult(responseData);
+      const responseData = await response.json();
+      setResult(responseData);
+
+      await addAnswer({ promptInput: message, content: responseData });
+    } catch (error) {
+      console.log(error);
+      throw new Error("Something went wrong when fetching data");
+    }
   }
   // console.log(result);
 
