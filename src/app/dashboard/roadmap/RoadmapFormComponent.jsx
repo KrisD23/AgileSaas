@@ -1,6 +1,17 @@
 "use client";
 
+import getAnswerAction from "@/lib/newAction";
+
 function RoadmapFormComponent() {
+  function submitAnswer(e) {
+    e.preventDefault();
+    const test = e.target.getInput.value;
+    // console.log(test);
+    // const formData = new FormData(e.target);
+    // const question = formData.get("getInput");
+    getAnswerAction(test);
+  }
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="text-center">
@@ -9,7 +20,7 @@ function RoadmapFormComponent() {
           Generate and refine your product and startup roadmaps with ease.
         </p>
 
-        <form onSubmit="">
+        <form onSubmit={submitAnswer}>
           <div className=" text-white p-4 rounded-lg mb-6 w-[800px]">
             <input
               type="text"
