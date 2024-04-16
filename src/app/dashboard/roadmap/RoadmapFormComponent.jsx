@@ -9,23 +9,26 @@ function RoadmapFormComponent() {
           Generate and refine your product and startup roadmaps with ease.
         </p>
 
-        <div className=" text-white p-4 rounded-lg mb-6 w-[800px]">
-          <input
-            type="text"
-            placeholder="An ecommerce store for snowboards "
-            className="bg-gray-800 p-2 rounded-lg ring-1 placeholder:text-center ring-gray-600 w-full mb-2"
-          />
-          {/* <div className="flex items-center justify-between ">
+        <form onSubmit="">
+          <div className=" text-white p-4 rounded-lg mb-6 w-[800px]">
+            <input
+              type="text"
+              placeholder="An ecommerce ...... "
+              className="bg-gray-800 p-2 rounded-lg ring-1 placeholder:text-center ring-gray-600 w-full mb-2"
+              name="getInput"
+            />
+            {/* <div className="flex items-center justify-between ">
             <div>
-              <button className="btn btn-ghost ">Image</button>
-              <button className="btn btn-ghost ">Public</button>
+            <button className="btn btn-ghost ">Image</button>
+            <button className="btn btn-ghost ">Public</button>
             </div>
             <div>
-              <button className="btn btn-primary  ">Speed</button>
-              <button className="btn btn-secondary  ">Quality</button>
+            <button className="btn btn-primary  ">Speed</button>
+            <button className="btn btn-secondary  ">Quality</button>
             </div>
           </div> */}
-        </div>
+          </div>
+        </form>
 
         {/* Breadcrumb navigation */}
         <nav className="text-gray-600">
