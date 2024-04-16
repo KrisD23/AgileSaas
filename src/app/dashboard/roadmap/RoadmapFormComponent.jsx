@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ModalComponent from "./modalComponent";
 
 import { addAnswer } from "@/lib/action";
+import ModalComponent from "./ModalComponent";
 
 function RoadmapFormComponent() {
   const [result, setResult] = useState("");
