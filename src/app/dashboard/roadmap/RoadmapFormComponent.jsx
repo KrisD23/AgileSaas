@@ -13,7 +13,7 @@ function RoadmapFormComponent() {
     const message = e.target.getInput.value;
     try {
       const response = await fetch(
-        `http://localhost:3000/api/openai/response`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/openai/response`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
