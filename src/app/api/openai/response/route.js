@@ -1,11 +1,11 @@
 import { openai } from "@/lib/openai";
-import { SendMessageValidator } from "@/lib/validators/SendMessageValidator";
+// import { SendMessageValidator } from "@/lib/validators/SendMessageValidator";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   const body = await req.json();
 
-  const { message } = SendMessageValidator.parse(body);
+  // const { message } = SendMessageValidator.parse(body);
 
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
@@ -23,7 +23,7 @@ export const POST = async (req) => {
         content:
           "Overview:\n\nKey Features:\n\nRoadmap:\n\nTech Stack Suggestions:\n\nMonetization:\n\nMarketing:\n\nJSON",
       },
-      { role: "user", content: message },
+      { role: "user", content: body },
     ],
   });
 
