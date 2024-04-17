@@ -16,9 +16,9 @@ const PaymentStatus = ({
         <h2 className="card-title">{text}</h2>
         <p>{subtext}</p>
         <div className="card-actions">
-          <button className="btn btn-primary">
-            <Link href={navLink}>{navLinkText}</Link>
-          </button>
+          <Link className="btn btn-primary" href={navLink}>
+            {navLinkText}
+          </Link>
         </div>
       </div>
     </div>
