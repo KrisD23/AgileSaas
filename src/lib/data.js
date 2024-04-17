@@ -11,9 +11,9 @@ export const getQueries = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
 
-    const user = await User.findOne({ username: userId });
+    const id = await User.findOne({ username: userId }).select("_id");
     // console.log("user:", user);
-    const queries = await Answer.find({ user: user._id });
+    const queries = await Answer.find().lean({ user: id });
     console.log("queries:", queries);
     // const queries = await Answer.find(username);
     mongoose.disconnect();
