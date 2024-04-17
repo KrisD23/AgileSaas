@@ -12,7 +12,7 @@ const page = async () => {
           key={index}
           idea={query["message"]["inputMessage"]}
           desc={query["message"]["responseMessage"]["details"]["description"]}
-          data={query}
+          id={query._id}
         />
       ))}
     </div>
