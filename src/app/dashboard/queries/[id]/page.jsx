@@ -1,14 +1,17 @@
-"use client";
+import { getQuerry } from "@/lib/data";
+import ModalComponent from "../../roadmap/ModalComponent";
 
-import { useParams } from "next/navigation";
+const SingleQuerryPage = async ({ params }) => {
+  const { id } = params;
+  const { message } = await getQuerry(id);
+  console.log("result:", message);
 
-import React from "react";
-
-const SlugPage = () => {
-  const { id } = useParams();
-  console.log(id);
-
-  return <div>{id}</div>;
+  return (
+    <div className="flex  flex-col mx-auto w-[800px]">
+      <div>Hello hunny Bunny!</div>
+      <ModalComponent data={message} />
+    </div>
+  );
 };
 
-export default SlugPage;
+export default SingleQuerryPage;

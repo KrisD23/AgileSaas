@@ -31,7 +31,7 @@ export const getQuerry = async (id) => {
     const query = await Answer.findById(id);
 
     mongoose.disconnect();
-    console.log("query:", query);
+    console.log("query");
     return query;
   } catch (error) {
     console.log(error);
