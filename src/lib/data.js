@@ -24,3 +24,17 @@ export const getQueries = async () => {
     throw new Error("Something went wrong when getting queries");
   }
 };
+
+export const getQuerry = async (id) => {
+  try {
+    await mongoose.connect(process.env.MONGO);
+    const query = await Answer.findById(id);
+
+    mongoose.disconnect();
+    console.log("query:", query);
+    return query;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Something went wrong when getting query");
+  }
+};
