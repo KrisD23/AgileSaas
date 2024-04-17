@@ -11,7 +11,9 @@ export const addAnswer = async ({ promptInput, content }) => {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     await mongoose.connect(process.env.MONGO);
-    const { _id } = await User.findOne({ username: user.id });
+    const { _id } = await User.findOne({ username: user.id })
+      .lean()
+      .select("_id");
 
     const newAnswer = new Answer({
       user: _id,

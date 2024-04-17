@@ -13,7 +13,9 @@ const page = async () => {
       redirect("/");
     } else {
       await mongoose.connect(process.env.MONGO);
-      const existingUser = await User.findOne({ username: user.id });
+      const existingUser = await User.findOne({ username: user.id })
+        .lean()
+        .select("username");
       if (!existingUser) {
         // User does not exist, create a new user
         const newUser = new User({

@@ -22,9 +22,9 @@ export const getQueries = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
 
-    const id = await User.findOne({ username: userId }).select("_id");
+    const id = await User.findOne({ username: userId }).lean().select("_id");
 
-    const queries = await Answer.find().lean({ user: id });
+    const queries = await Answer.find({ user: id }).lean();
     console.log("queries:", queries);
 
     mongoose.disconnect();
@@ -38,7 +38,7 @@ export const getQueries = async () => {
 export const getQuerry = async (id) => {
   try {
     await mongoose.connect(process.env.MONGO);
-    const query = await Answer.findById(id);
+    const query = await Answer.findById(id).lean();
 
     mongoose.disconnect();
     console.log("query");
