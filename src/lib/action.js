@@ -7,11 +7,21 @@ import { Answer, User } from "./models"; // Database models
 import mongoose from "mongoose";
 
 export const addAnswer = async ({ promptInput, content }) => {
+  let userId;
   try {
     const { getUser } = getKindeServerSession();
-    const user = await getUser();
+    userId = (await getUser())?.id; // Handle potential errors and null values
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return []; // Or handle the error differently
+  }
+
+  if (!userId) {
+    return []; // No user found, return empty array or handle differently
+  }
+  try {
     await mongoose.connect(process.env.MONGO);
-    const { _id } = await User.findOne({ username: user.id })
+    const { _id } = await User.findOne({ username: userId })
       .lean()
       .select("_id");
 
@@ -21,7 +31,7 @@ export const addAnswer = async ({ promptInput, content }) => {
     });
     console.log("newAnswer saved to db");
     await newAnswer.save();
-    revalidatePath("/dashboard/queries");
+    // revalidatePath("/dashboard/roadmap");
     console.log("saved to db");
     mongoose.disconnect();
   } catch (error) {
@@ -46,7 +56,7 @@ export const checkPremiumUser = async () => {
 
   try {
     await mongoose.connect(process.env.MONGO);
-    const { isPremiumUser } = await User.findOne({ username: user.id })
+    const { isPremiumUser } = await User.findOne({ username: userId })
       .lean()
       .select("isPremiumUser");
     mongoose.disconnect();

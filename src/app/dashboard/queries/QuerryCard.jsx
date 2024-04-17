@@ -7,9 +7,9 @@ const QuerryCard = ({ idea, desc, id }) => {
         <h2 className="card-title"> IDEA : {idea}</h2>
         <p className="line-clamp-2"> Response : {desc}</p>
         <div className="card-actions justify-end">
-          <button className="btn">
-            <Link href={`/dashboard/queries/${id}`}>Read more</Link>
-          </button>
+          <Link className="btn  " href={`/dashboard/queries/${id}`}>
+            Read more
+          </Link>
         </div>
       </div>
     </div>

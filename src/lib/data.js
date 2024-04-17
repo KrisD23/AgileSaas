@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { Answer, User } from "./models";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { revalidatePath } from "next/cache";
 
 export const getQueries = async () => {
   let userId;
