@@ -1,9 +1,11 @@
+import { checkPremiumUser } from "@/lib/action";
 import { getStripeSession } from "@/lib/stripe";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
 const page = async () => {
+  const premiumUser = await checkPremiumUser();
   async function createSubscription() {
     "use server";
     const { getUser } = getKindeServerSession();
@@ -16,26 +18,32 @@ const page = async () => {
   }
 
   return (
-    <div className="flex flex-col h-[90vh] justify-center items-center   gap-10">
-      <div className="flex flex-col items-center gap-4 ">
-        <h1 className="text-3xl text-center">Subscription</h1>
-        <p>Subscribe to our premium plan and get access to all features.</p>
-        <p>Reach and fuck your goals faster and better</p>
-        <Image
-          src="/subscription.svg"
-          className="z-[-1]"
-          alt="discount"
-          height={300}
-          width={300}
-        />
-      </div>
-      <div>
-        <form action={createSubscription}>
-          <button type="submit" className="btn btn-primary">
-            Fuck it
-          </button>
-        </form>
-      </div>
+    <div>
+      {premiumUser ? (
+        <div>Best of luck</div>
+      ) : (
+        <div className="flex flex-col h-[90vh] justify-center items-center   gap-10">
+          <div className="flex flex-col items-center gap-4 ">
+            <h1 className="text-3xl text-center">Subscription</h1>
+            <p>Subscribe to our premium plan and get access to all features.</p>
+            <p>Reach and fuck your goals faster and better</p>
+            <Image
+              src="/subscription.svg"
+              className="z-[-1]"
+              alt="discount"
+              height={300}
+              width={300}
+            />
+          </div>
+          <div>
+            <form action={createSubscription}>
+              <button type="submit" className="btn btn-primary">
+                Fuck it
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

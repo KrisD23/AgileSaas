@@ -29,3 +29,30 @@ export const addAnswer = async ({ promptInput, content }) => {
     throw new Error("Something went wrong when creating answer");
   }
 };
+
+export const checkPremiumUser = async () => {
+  let userId;
+  try {
+    const { getUser } = getKindeServerSession();
+    userId = (await getUser())?.id; // Handle potential errors and null values
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return []; // Or handle the error differently
+  }
+
+  if (!userId) {
+    return []; // No user found, return empty array or handle differently
+  }
+
+  try {
+    await mongoose.connect(process.env.MONGO);
+    const { isPremiumUser } = await User.findOne({ username: user.id })
+      .lean()
+      .select("isPremiumUser");
+    mongoose.disconnect();
+    return isPremiumUser;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Something went wrong when creating answer");
+  }
+};
