@@ -7,7 +7,7 @@ function PricingComponent() {
   return (
     <div className="relative">
       <div className="absolute top-0 left-0 w-full h-[700px] bg-gradient-to-r from-purple-800 to-blue-800"></div>
-      <div className="flex justify-center items-center p-10 text-white h-[300px] relative z-10">
+      <div className="flex justify-center items-center p-10 text-white h-[300px] relative ">
         <div className="text-center">
           <h1 className="text-7xl font-bold">Pricing</h1>
           <p className="mt-2 text-gray-200">
