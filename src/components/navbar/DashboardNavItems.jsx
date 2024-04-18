@@ -30,7 +30,7 @@ const DashboardNavItems = () => {
             <Link
               href={item.href}
               className={`block py-2 px-4 ${
-                path === item.href ? "bg-blue-500 text-white font-bold" : ""
+                path === item.href ? "bg-primary text-gray-200 font-bold" : ""
               }`}
             >
               {item.name}

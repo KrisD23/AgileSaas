@@ -1,6 +1,8 @@
+import AlreadySubscribe from "@/components/AlreadySubscribed";
 import { checkPremiumUser } from "@/lib/action";
 import { getStripeSession } from "@/lib/stripe";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
@@ -20,28 +22,98 @@ const page = async () => {
   return (
     <div>
       {premiumUser ? (
-        <div>Best of luck</div>
+        <AlreadySubscribe />
       ) : (
-        <div className="flex flex-col h-[90vh] justify-center items-center   gap-10">
+        <div className="flex flex-col h-full justify-center items-center   gap-10">
           <div className="flex flex-col items-center gap-4 ">
-            <h1 className="text-3xl text-center">Subscription</h1>
+            <h1 className="text-3xl text-center mt-20">Subscription</h1>
             <p>Subscribe to our premium plan and get access to all features.</p>
             <p>Reach and fuck your goals faster and better</p>
-            <Image
-              src="/subscription.svg"
-              className="z-[-1]"
-              alt="discount"
-              height={300}
-              width={300}
-            />
+            <div className="m-8">
+              <div className="card w-96 bg-base-100 shadow-xl  rounded-2xl  p-4 m-1">
+                <div className="card-body items-center text-center">
+                  <h2 className="text-3xl font-bold text-primary mb-4">
+                    Agilesaas
+                  </h2>
+                  <h2 className="text-3xl font-bold text-primary mb-4">
+                    $20{" "}
+                    <span className="text-lg font-bold text-primary mb-4">
+                      / Lifetime
+                    </span>
+                  </h2>
+                  <form action={createSubscription}>
+                    <button className="btn btn-primary px-28 py-3 rounded-2xl hover:bg-primary-dark ">
+                      Buy Now
+                    </button>
+                  </form>
+
+                  <div className="features text-left mt-6 ">
+                    <ul className="list-none p-0 m-0">
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Tailored Roadmaps
+                        </span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Accessibility Focus
+                        </span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Comprehensive Guidance
+                        </span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Refinement Tools
+                        </span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">Ease of Use</span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Holistic Approach
+                        </span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Actionable Insights
+                        </span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Community Support
+                        </span>
+                      </li>
+                      <li className="mb-4 flex">
+                        <CheckCircle />
+                        <span className="text-gray-200 ml-2">
+                          Lifetime access
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
+          {/* <div>
             <form action={createSubscription}>
               <button type="submit" className="btn btn-primary">
                 Fuck it
               </button>
             </form>
-          </div>
+          </div> */}
         </div>
       )}
     </div>
