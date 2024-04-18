@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Route,
   BookOpenCheck,
@@ -6,7 +8,6 @@ import {
   Blend,
   HeartHandshake,
 } from "lucide-react";
-import Image from "next/image";
 
 function FeaturesComponent() {
   return (

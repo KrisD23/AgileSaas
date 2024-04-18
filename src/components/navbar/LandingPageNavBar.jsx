@@ -31,15 +31,7 @@ const LandingPageNavBar = async () => {
               <Link href="/features">Features</Link>
             </li>
             <li>
-              <a>Resources</a>
-              <ul className="p-2">
-                <li>
-                  <a>Getting Started</a>
-                </li>
-                <li>
-                  <a>Guides</a>
-                </li>
-              </ul>
+              <Link href="/resources">Resources</Link>
             </li>
             <li>
               <Link href="/about">About</Link>
@@ -62,18 +54,7 @@ const LandingPageNavBar = async () => {
             <Link href="/features">Features</Link>
           </li>
           <li className="dropdown dropdown-hover">
-            <div tabIndex={0}>Resources</div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>Getting Started</a>
-              </li>
-              <li>
-                <a>Guides</a>
-              </li>
-            </ul>
+            <Link href="/resources">Resources</Link>
           </li>
           <li>
             <Link href="/about">About</Link>

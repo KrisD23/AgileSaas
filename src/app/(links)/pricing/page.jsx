@@ -1,3 +1,5 @@
+"use client";
+
 import { CheckCircle, CircleX } from "lucide-react";
 
 CheckCircle;
