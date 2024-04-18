@@ -24,10 +24,11 @@ const LandingPageNavBar = async () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Pricing</a>
+              {/* <a href="/pricing">Pricing</a> */}
+              <Link href="/pricing">Pricing</Link>
             </li>
             <li>
-              <a>Features</a>
+              <Link href="/features">Features</Link>
             </li>
             <li>
               <a>Resources</a>
@@ -41,22 +42,24 @@ const LandingPageNavBar = async () => {
               </ul>
             </li>
             <li>
-              <a>About</a>
+              <Link href="/about">About</Link>
             </li>
             <li>
-              <a>Contact</a>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Launchpad IQ </a>
+        <Link href="/" className="btn btn-ghost text-xl">
+          Launchpad IQ{" "}
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Pricing</a>
+            <Link href="/pricing">Pricing</Link>
           </li>
           <li>
-            <a>Features</a>
+            <Link href="/features">Features</Link>
           </li>
           <li className="dropdown dropdown-hover">
             <div tabIndex={0}>Resources</div>
@@ -73,10 +76,10 @@ const LandingPageNavBar = async () => {
             </ul>
           </li>
           <li>
-            <a>About</a>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <a>Contact</a>
+            <Link href="/contact">Contact</Link>
           </li>
         </ul>
       </div>

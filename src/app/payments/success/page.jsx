@@ -1,6 +1,7 @@
 import React from "react";
 import { CircleCheckBig } from "lucide-react";
 import PaymentStatus from "@/components/payments/PaymentStatus";
+
 const PaymentSuccessfulPage = async () => {
   return (
     <div className="flex justify-center items-center h-screen">
