@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const AlreadySubscribe = () => {
@@ -26,9 +27,9 @@ const AlreadySubscribe = () => {
           </button>
         </form>
       </div> */}
-      <a href="/roadmap" className="btn btn-primary">
+      <Link href="/dashboard/roadmap" className="btn btn-primary">
         Go to Roadmap
-      </a>
+      </Link>
     </div>
   );
 };

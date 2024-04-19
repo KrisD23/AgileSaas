@@ -28,7 +28,7 @@ const DashboardPageNavBar = async () => {
           </ul>
         </div>
         <Link href="/dashboard" className="btn btn-ghost text-xl">
-          LaunchPad IQ
+          Agile SAAS
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

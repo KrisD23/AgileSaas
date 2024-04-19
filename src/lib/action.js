@@ -13,11 +13,11 @@ export const addAnswer = async ({ promptInput, content }) => {
     userId = (await getUser())?.id; // Handle potential errors and null values
   } catch (error) {
     console.error("Error fetching user data:", error);
-    return []; // Or handle the error differently
+    return; // Or handle the error differently
   }
 
   if (!userId) {
-    return []; // No user found, return empty array or handle differently
+    return; // No user found, return empty array or handle differently
   }
   try {
     await mongoose.connect(process.env.MONGO);
@@ -47,11 +47,11 @@ export const checkPremiumUser = async () => {
     userId = (await getUser())?.id; // Handle potential errors and null values
   } catch (error) {
     console.error("Error fetching user data:", error);
-    return []; // Or handle the error differently
+    return; // Or handle the error differently
   }
 
   if (!userId) {
-    return []; // No user found, return empty array or handle differently
+    return; // No user found, return empty array or handle differently
   }
 
   try {
@@ -63,6 +63,6 @@ export const checkPremiumUser = async () => {
     return isPremiumUser;
   } catch (error) {
     console.log(error);
-    throw new Error("Something went wrong when creating answer");
+    throw new Error("Something went wrong when checking user status!");
   }
 };

@@ -42,7 +42,7 @@ const LandingPageNavBar = async () => {
           </ul>
         </div>
         <Link href="/" className="btn btn-ghost text-xl">
-          Launchpad IQ{" "}
+          Agile SAAS
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

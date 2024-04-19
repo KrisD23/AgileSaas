@@ -1,5 +1,5 @@
 "use client";
-
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { CheckCircle, CircleX } from "lucide-react";
 
 CheckCircle;
@@ -28,8 +28,8 @@ function PricingComponent() {
                 notdefiend
               </h2> */}
               {/* <div className="h-[52px]"/> */}
-              <button className="btn btn-primary px-28 py-3 rounded-2xl hover:bg-primary-dark ">
-                Buy Now
+              <button className=" text-white btn btn-outline px-28 py-3 rounded-2xl ">
+                Bruh!
               </button>
 
               <div className="features text-left mt-6 ">
@@ -94,9 +94,10 @@ function PricingComponent() {
                   / Lifetime
                 </span>
               </h2>
-              <button className="btn btn-primary px-28 py-3 rounded-2xl hover:bg-primary-dark ">
+
+              <LoginLink className="btn btn-primary px-28 py-3 rounded-2xl hover:bg-primary-dark ">
                 Buy Now
-              </button>
+              </LoginLink>
 
               <div className="features text-left mt-6 ">
                 <ul className="list-none p-0 m-0">
