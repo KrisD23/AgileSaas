@@ -6,7 +6,7 @@ const LandingPageHeroComponent = () => {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <Image src={"/hero.svg"} width={500} height={500} alt="hero image" />
+        {/* <Image src={"/hero.svg"} width={500} height={500} alt="hero image" /> */}
         <div className="text-center lg:text-left w-[500px]">
           <h1 className="text-5xl font-bold">Agile Saas Platform</h1>
           <p className="py-6">
