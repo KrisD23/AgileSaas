@@ -6,6 +6,7 @@ import {
   LoginLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { redirect } from "next/navigation";
+import Image from "next/image";
 
 const LandingPageHeroComponent = () => {
   const handleSubmit = (e) => {
@@ -45,7 +46,12 @@ const LandingPageHeroComponent = () => {
         </div>
 
         <div className="mt-20 w-full ">
-          <div className="bg-blue-500 h-[200px] rounded-2xl"></div>
+          <div className="bg-blue-500 h-[30vh] rounded-2xl flex flex-col items-center ">
+            <div className="text-2xl text-white font-semibold my-3 uppercase">
+              Ai Generated Roadmaps
+            </div>
+            <Image src={"/roadmap.svg"} width={250} height={250} alt="hero" />
+          </div>
         </div>
       </div>
     </div>
