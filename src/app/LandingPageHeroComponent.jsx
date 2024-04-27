@@ -1,12 +1,9 @@
 "use client";
 import { WandSparkles } from "lucide-react";
 import React from "react";
-import {
-  RegisterLink,
-  LoginLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
+import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { redirect } from "next/navigation";
-import Image from "next/image";
+import HeroCard from "@/components/hero-components/HeroCard";
 
 const LandingPageHeroComponent = () => {
   const handleSubmit = (e) => {
@@ -16,8 +13,10 @@ const LandingPageHeroComponent = () => {
   };
 
   return (
-    <div className="h-[90vh] w-full flex px-6">
+    <div className="h-full w-full flex px-6">
+      {/* Hero Section Container */}
       <div className="w-full flex flex-col mt-[10vh] items-center">
+        {/* Text */}
         <div className="text-3xl text-center font-semibold">
           Create and Launch your<span className="text-blue-500"> Product </span>
           and <span className="text-blue-500">Startup</span> with Ease
@@ -29,6 +28,8 @@ const LandingPageHeroComponent = () => {
             roadmaps with ease.
           </p>
         </div>
+
+        {/* Input */}
         <div className="mt-8 w-full">
           <form onSubmit={(e) => handleSubmit(e)}>
             <label className="input px-1 py-0 input-bordered border-gray-300 rounded-lg border flex items-center gap-2">
@@ -45,14 +46,20 @@ const LandingPageHeroComponent = () => {
           </form>
         </div>
 
-        <div className="mt-20 w-full ">
-          <div className="bg-blue-500 h-[30vh] rounded-2xl flex flex-col items-center ">
-            <div className="text-2xl text-white font-semibold my-3 uppercase">
-              Ai Generated Roadmaps
-            </div>
-            <Image src={"/roadmap.svg"} width={250} height={250} alt="hero" />
-          </div>
+        {/* Hero Cards */}
+        <HeroCard image="/roadmap.svg" title="Ai Generated Roadmaps" />
+        <HeroCard image="/hero.svg" title="Product Roadmaps" />
+        <HeroCard image="/market.svg" title="Market Analysis" />
+
+        {/* Much more */}
+
+        <div className="text-3xl text-center font-semibold mt-8">
+          And Much More
         </div>
+
+        <RegisterLink className="mt-8 h-10 flex font-semibold  items-center bg-blue-500 text-white px-6 py-1 rounded-2xl text-center">
+          Sign Up And Start Today
+        </RegisterLink>
       </div>
     </div>
   );
