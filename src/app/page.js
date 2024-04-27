@@ -3,7 +3,7 @@ import LandingPageHeroComponent from "./LandingPageHeroComponent";
 
 async function HomePage() {
   return (
-    <div>
+    <div className="h-full w-full ">
       <LandingPageNavBar />
       <LandingPageHeroComponent />
     </div>
