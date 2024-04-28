@@ -17,12 +17,15 @@ const LandingPageHeroComponent = () => {
       {/* Hero Section Container */}
       <div className="w-full flex flex-col mt-[10vh] items-center">
         {/* Text */}
-        <div className="text-3xl text-center font-semibold">
-          Create and Launch your<span className="text-blue-500"> Product </span>
-          and <span className="text-blue-500">Startup</span> with Ease
+        <div className="lg:w-[70%]  ">
+          <p className="text-3xl lg:text-5xl  lg:leading-tight text-center font-semibold">
+            Create and Launch your
+            <span className="text-blue-500"> Product </span>
+            and <span className="text-blue-500">Startup</span> with Ease
+          </p>
         </div>
-        <div className="mt-8">
-          <p className="text-center ">
+        <div className="mt-8 lg:w-[40%] w-full">
+          <p className="text-center lg:leading-7 lg:text-xl  text-gray-500">
             Create and launch your product and startup with ease. Make it
             accessible to everyone. Generate and refine your product and startup
             roadmaps with ease.
@@ -30,12 +33,12 @@ const LandingPageHeroComponent = () => {
         </div>
 
         {/* Input */}
-        <div className="mt-8 w-full">
+        <div className="mt-8 w-full lg:w-[50%] shadow-lg shadow-blue-500 ">
           <form onSubmit={(e) => handleSubmit(e)}>
-            <label className="input px-1 py-0 input-bordered border-gray-300 rounded-lg border flex items-center gap-2">
+            <label className="input px-1 py-0 input-bordered rounded-lg border-gray-200  border flex items-center gap-2">
               <input
                 type="text"
-                className="grow px-2"
+                className="grow px-2 "
                 placeholder="Used book selling store"
               />
               <RegisterLink className="flex gap-2 items-center justify-center h-10 w-[30%] rounded-lg bg-blue-400 text-white">
