@@ -28,7 +28,7 @@ const LandingPageNavBar = async () => {
               <Link href="/pricing">Pricing</Link>
             </li>
             <li>
-              <Link href="/features">Features</Link>
+              <Link href="/#features">Features</Link>
             </li>
             <li>
               <Link href="/resources">Resources</Link>
@@ -51,7 +51,7 @@ const LandingPageNavBar = async () => {
             <Link href="/pricing">Pricing</Link>
           </li>
           <li>
-            <Link href="/features">Features</Link>
+            <Link href="/#features">Features</Link>
           </li>
           <li className="dropdown dropdown-hover">
             <Link href="/resources">Resources</Link>

@@ -1,162 +1,58 @@
-"use client";
-import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import { CheckCircle, CircleX } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
-CheckCircle;
-function PricingComponent() {
+const perks = [
+  "Ai generated Roadmaps",
+  "Market Analysis and Insights",
+  "Monetization Strategy",
+  "Key features and benefits",
+  "Tech Stack",
+];
+
+const page = () => {
   return (
-    <div className="relative">
-      <div className="absolute top-0 left-0 w-full h-[700px] bg-gradient-to-r from-purple-800 to-blue-800"></div>
-      <div className="flex justify-center items-center p-10 text-white h-[300px] relative ">
-        <div className="text-center">
-          <h1 className="text-7xl font-bold">Pricing</h1>
-          <p className="mt-2 text-gray-200">
-            Every plan starts off with a 14-day free trial.
+    <div className="h-screen w-full flex flex-col px-6 gap-5 items-center">
+      <h1 className="text-yellow-200 text-xl text-center mt-10 font-bold">
+        Pricing
+      </h1>
+      <h2 className="text-3xl text-center  font-bold">
+        Save your precious Time and Launch Fast and Easy
+      </h2>
+
+      {/* Card */}
+      <div
+        className="w-full bg-blue-500 h-23 max-w-[600px] 
+       rounded-xl p-4 flex flex-col gap-2 ring-2 ring-white"
+      >
+        <h1 className="text-3xl font-semibold  text-gray-200">Get Going </h1>
+        <p className="text-gray-300 mt-1">
+          Develop and Launch your Products and Startup with Ease
+        </p>
+
+        <div>
+          <p className="text-3xl font-semibold  text-white">
+            $19
+            <span className="text-lg font-bold text-yellow-200">
+              / Lifetime Access
+            </span>
           </p>
         </div>
-      </div>
 
-      <div className="flex justify-center items-center relative z-10 py-20 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 mt-[-50px]">
-          <div className="card w-96 bg-base-100 shadow-xl  rounded-2xl overflow-hidden p-4 m-1">
-            <div className="card-body items-center text-center">
-              <h2 className="text-3xl font-bold text-primary my-[40px]">
-                ChatGPT
-              </h2>
-              {/* <h2 className="text-3xl font-bold text-primary mb-4">
-                $20 <span className="text-lg font-bold text-primary mb-4">/ Lifetime</span>
-                notdefiend
-              </h2> */}
-              {/* <div className="h-[52px]"/> */}
-              <button className=" text-white btn btn-outline px-28 py-3 rounded-2xl ">
-                Bruh!
-              </button>
+        <Link className="btn rounded-lg mt-5" href="/dashboard/subscription">
+          Buy Now
+        </Link>
 
-              <div className="features text-left mt-6 ">
-                <ul className="list-none p-0 m-0">
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">
-                      Tailored Roadmaps
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">
-                      Accessibility Focus
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">
-                      Comprehensive Guidance
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">Refinement Tools</span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">Ease of Use</span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">
-                      Holistic Approach
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">
-                      Actionable Insights
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CircleX />
-                    <span className="text-gray-200 ml-2">
-                      Community Support
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="card w-96 bg-base-100 shadow-xl  rounded-2xl overflow-hidden p-4 m-1">
-            <div className="card-body items-center text-center">
-              <h2 className="text-3xl font-bold text-primary mb-4">
-                Agilesaas
-              </h2>
-              <h2 className="text-3xl font-bold text-primary mb-4">
-                $20{" "}
-                <span className="text-lg font-bold text-primary mb-4">
-                  / Lifetime
-                </span>
-              </h2>
-
-              <LoginLink className="btn btn-primary px-28 py-3 rounded-2xl hover:bg-primary-dark ">
-                Buy Now
-              </LoginLink>
-
-              <div className="features text-left mt-6 ">
-                <ul className="list-none p-0 m-0">
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">
-                      Tailored Roadmaps
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">
-                      Accessibility Focus
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">
-                      Comprehensive Guidance
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">Refinement Tools</span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">Ease of Use</span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">
-                      Holistic Approach
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">
-                      Actionable Insights
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">
-                      Community Support
-                    </span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckCircle />
-                    <span className="text-gray-200 ml-2">Lifetime access</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        {/* perks */}
+        <div>
+          {perks.map((perk) => (
+            <p className="text-white font-semibold mt-1" key={perk}>
+              ✓ {perk}
+            </p>
+          ))}
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default PricingComponent;
+export default page;

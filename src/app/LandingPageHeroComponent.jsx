@@ -51,8 +51,11 @@ const LandingPageHeroComponent = () => {
           </form>
         </div>
 
-        {/* Hero Cards */}
-        <div className="w-full flex flex-col lg:flex-row gap-4 mt-8 lg:px-[140px] lg:gap-16">
+        {/* Hero Cards Features section */}
+        <div
+          id="features"
+          className="w-full flex flex-col lg:flex-row gap-4 mt-8 lg:px-[140px] lg:gap-16"
+        >
           <HeroCard image="/roadmap.svg" title="Ai Generated Roadmaps" />
           <div className="flex flex-col items-center gap-2 justify-center lg:w-[50%]  ">
             <h2 className="text-3xl text-center w-full lg:text-start font-semibold">
