@@ -25,7 +25,7 @@ const LandingPageNavBar = async () => {
           >
             <li>
               {/* <a href="/pricing">Pricing</a> */}
-              <Link href="/pricing">Pricing</Link>
+              <Link href="/#pricing">Pricing</Link>
             </li>
             <li>
               <Link href="/#features">Features</Link>
@@ -48,7 +48,7 @@ const LandingPageNavBar = async () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href="/pricing">Pricing</Link>
+            <Link href="/#pricing">Pricing</Link>
           </li>
           <li>
             <Link href="/#features">Features</Link>
