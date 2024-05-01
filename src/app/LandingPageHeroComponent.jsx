@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { WandSparkles } from "lucide-react";
 import React from "react";
 import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
@@ -6,10 +7,11 @@ import { redirect } from "next/navigation";
 import HeroCard from "@/components/hero-components/HeroCard";
 
 const LandingPageHeroComponent = () => {
+  const router = useRouter();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hello");
-    redirect("/dashboard");
+    router.push("/dashboard/roadmap");
   };
 
   return (
@@ -130,20 +132,17 @@ const LandingPageHeroComponent = () => {
           </div>
         </div>
 
-        {/* 
-        
-        
-         */}
-
         {/* Much more */}
 
-        <div className="text-3xl text-center font-semibold mt-8">
-          And Much More
+        <div className="flex flex-col items-center mt-14 lg:mt-20 gap-2 ">
+          <div className="text-3xl text-center font-semibold ">
+            Create SaaS in a Week
+          </div>
+          <p>Join our community of SaaS startups</p>
+          <RegisterLink className=" h-10 flex font-semibold  items-center bg-blue-500 text-white px-6 py-1 rounded-2xl text-center">
+            Sign Up And Start Today
+          </RegisterLink>
         </div>
-
-        <RegisterLink className="mt-8 h-10 flex font-semibold  items-center bg-blue-500 text-white px-6 py-1 rounded-2xl text-center">
-          Sign Up And Start Today
-        </RegisterLink>
       </div>
     </div>
   );
