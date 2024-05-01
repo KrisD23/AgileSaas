@@ -73,7 +73,7 @@ const page = () => {
             <Link href={"#"}>
               <Twitter size={30} />
             </Link>
-            <Link href={"https://www.instagram.com/ansh._soni._/"}>
+            <Link href={"#"}>
               <Instagram size={30} />
             </Link>
           </div>
