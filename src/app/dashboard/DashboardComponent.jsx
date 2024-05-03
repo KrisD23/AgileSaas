@@ -1,28 +1,22 @@
-"use client";
-
 import Link from "next/link";
+import React from "react";
 
-function DashboardComponent() {
+const DashboardComponent = ({ user }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-base-100 to-gray-700">
-      <div className="text-center">
-        <p className="mb-2 text-sm uppercase text-gray-500">How it works</p>
-        <h1 className="text-5xl mb-4 font-bold flex flex-col gap-1 ">
-          <span className="text-[3.05rem]">
-            Generate and refine your Ideas.
-          </span>
-          <span>Fast, easy, and accessible.</span>
-        </h1>
-        <p className="mb-6 text-gray-500 ">
-          Create and launch your product and startup.
-        </p>
-
-        <Link className="btn btn-primary" href="/dashboard/roadmap">
-          Start now
+    <div className="h-screen w-full justify-center items-center flex flex-col gap-2">
+      <h1 className="text-3xl font-bold">Wellcome to Agile Saas</h1>
+      <h2 className="text-gray-500 font-semibold text-xl">{user.given_name}</h2>
+      {/* <p className="text-blue-500 font-semibold uppercase">Go to :</p> */}
+      <div className="flex gap-2 ">
+        <Link href={"dashboard/roadmap"} className="btn btn-outline">
+          Roadmap to Get Started
+        </Link>
+        <Link href={"dashboard/subscription"} className="btn btn-outline">
+          Or Subscription
         </Link>
       </div>
     </div>
   );
-}
+};
 
 export default DashboardComponent;

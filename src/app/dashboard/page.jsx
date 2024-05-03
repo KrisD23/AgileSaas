@@ -6,6 +6,7 @@ import DashboardComponent from "./DashboardComponent";
 
 const page = async () => {
   const { getUser } = getKindeServerSession();
+  const user = await getUser();
 
   try {
     const user = await getUser();
@@ -38,11 +39,7 @@ const page = async () => {
   } catch (error) {
     console.log(error);
   }
-  return (
-    <div>
-      <DashboardComponent />
-    </div>
-  );
+  return <div>{user && <DashboardComponent user={user} />}</div>;
 };
 
 export default page;

@@ -4,10 +4,21 @@ import { getStripeSession } from "@/lib/stripe";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
+
+import React from "react";
+const perks = [
+  "Ai generated Roadmaps",
+  "Market Analysis and Insights",
+  "Monetization Strategy",
+  "Key features and benefits",
+  "Tech Stack",
+];
 
 const page = async () => {
   const premiumUser = await checkPremiumUser();
+  // const premiumUser = false;
   async function createSubscription() {
     "use server";
     const { getUser } = getKindeServerSession();
@@ -20,100 +31,62 @@ const page = async () => {
   }
 
   return (
-    <div>
+    <div className="h-screen w-full">
       {premiumUser ? (
         <AlreadySubscribe />
       ) : (
-        <div className="flex flex-col h-full justify-center items-center   gap-10">
-          <div className="flex flex-col items-center gap-4 ">
-            <h1 className="text-3xl text-center mt-20">Subscription</h1>
-            <p>Subscribe to our premium plan and get access to all features.</p>
-            <p>Reach and fuck your goals faster and better</p>
-            <div className="m-8">
-              <div className="card w-96 bg-base-100 shadow-xl  rounded-2xl  p-4 m-1">
-                <div className="card-body items-center text-center">
-                  <h2 className="text-3xl font-bold text-primary mb-4">
-                    Agilesaas
-                  </h2>
-                  <h2 className="text-3xl font-bold text-primary mb-4">
-                    $20{" "}
-                    <span className="text-lg font-bold text-primary mb-4">
-                      / Lifetime
-                    </span>
-                  </h2>
-                  <form action={createSubscription}>
-                    <button className="btn btn-primary px-28 py-3 rounded-2xl hover:bg-primary-dark ">
-                      Buy Now
-                    </button>
-                  </form>
+        <div
+          id="pricing"
+          className="h-screen w-full flex flex-col px-6 gap-5 items-center"
+        >
+          <h1 className="text-yellow-200 text-xl text-center mt-10 font-bold">
+            Pricing
+          </h1>
+          <h2 className="text-3xl text-center  font-bold">
+            Save your precious Time and Launch Fast and Easy
+          </h2>
 
-                  <div className="features text-left mt-6 ">
-                    <ul className="list-none p-0 m-0">
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Tailored Roadmaps
-                        </span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Accessibility Focus
-                        </span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Comprehensive Guidance
-                        </span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Refinement Tools
-                        </span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">Ease of Use</span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Holistic Approach
-                        </span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Actionable Insights
-                        </span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Community Support
-                        </span>
-                      </li>
-                      <li className="mb-4 flex">
-                        <CheckCircle />
-                        <span className="text-gray-200 ml-2">
-                          Lifetime access
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+          {/* Card */}
+          <div
+            className="w-full bg-blue-500 h-23 max-w-[600px] 
+       rounded-xl p-4 flex flex-col gap-2 ring-2 ring-white"
+          >
+            <h1 className="text-3xl font-semibold  text-gray-200">
+              Get Going{" "}
+            </h1>
+            <p className="text-gray-300 mt-1">
+              Develop and Launch your Products and Startup with Ease
+            </p>
+
+            <div>
+              <p className="text-3xl font-semibold  text-white">
+                $19
+                <span className="text-lg font-bold text-yellow-200">
+                  / Lifetime Access
+                </span>
+              </p>
+            </div>
+
+            <form action={createSubscription} className="btn rounded-lg mt-5">
+              <button type="submit">Buy Now</button>
+            </form>
+
+            {/* <Link
+              className="btn rounded-lg mt-5"
+              href="/dashboard/subscription"
+            >
+              Buy Now
+            </Link> */}
+
+            {/* perks */}
+            <div>
+              {perks.map((perk) => (
+                <p className="text-white font-semibold mt-1" key={perk}>
+                  ✓ {perk}
+                </p>
+              ))}
             </div>
           </div>
-          {/* <div>
-            <form action={createSubscription}>
-              <button type="submit" className="btn btn-primary">
-                Fuck it
-              </button>
-            </form>
-          </div> */}
         </div>
       )}
     </div>

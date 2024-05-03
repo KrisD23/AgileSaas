@@ -3,10 +3,16 @@ import RoadmapFormComponent from "./RoadmapFormComponent";
 import RoadmapUnsubscribe from "@/components/roadmap-unsubscribed";
 
 const page = async () => {
-  const premiumUser = await checkPremiumUser();
+  // const premiumUser = await checkPremiumUser();
+
+  // return (
+  //   <div>{premiumUser ? <RoadmapFormComponent /> : <RoadmapUnsubscribe />}</div>
+  // );
 
   return (
-    <div>{premiumUser ? <RoadmapFormComponent /> : <RoadmapUnsubscribe />}</div>
+    <div className="h-screen w-full px-6">
+      <RoadmapFormComponent />
+    </div>
   );
 };
 
